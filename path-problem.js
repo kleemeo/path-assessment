@@ -8,9 +8,10 @@ function solution(matrix) {
     let maxRow = matrix.length;
     let maxCol = matrix[0].length;
 
-    // invalid paths: out of boundary, barriers (X), visited squares
+    // invalid squares: out of boundary, barriers (X), visited squares
     if (row < 0 || row >= maxRow || col < 0 || col >= maxCol || matrix[row][col] === 'X' || visited[row][col]) return;
 
+    // if valid, update visited matrix
     visited[row][col] = true;
 
     // search in all 4 directions
@@ -29,7 +30,6 @@ function solution(matrix) {
   // start path search from assassin coordinates
   dfs(arr, aPos[0], aPos[1], visited)
 
-  // console.log(visited);
   // if bottom right square cannot be visited, return false
   if (!visited[arr.length - 1][arr[0].length - 1]) return false;
 
